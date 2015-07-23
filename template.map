@@ -31,7 +31,7 @@ MAP
 
 	SCALEBAR
 		INTERVALS 5
-		SIZE 450 16
+		SIZE 260 16
 		STATUS embed
 		UNITS kilometers
 		LABEL
@@ -54,6 +54,18 @@ MAP
 		STATUS ON
 		DATA "GIS_Data_Archive/GTiff/ftp.glcf.umd.edu/MCD12Q1_V51_LC1.2012.tif"
 		CLASSITEM "[pixel]"
+		CLASS
+			EXPRESSION "0"
+			STYLE
+				COLOR 204 255 255
+			END
+		END
+		CLASS
+			EXPRESSION ([pixel] != 13 AND [pixel] != 0)
+			STYLE
+				COLOR 255 204 153
+			END
+		END
 		CLASS
 			EXPRESSION "13"
 			STYLE
