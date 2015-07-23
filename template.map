@@ -1,0 +1,140 @@
+MAP
+	CONFIG "PROJ_LIB" "/usr/share/proj/"
+	FONTSET "fonts.txt"
+	IMAGECOLOR 170 255 255
+	IMAGETYPE "png"
+	NAME "Nighttime Light"
+	SIZE 800 640
+	STATUS ON
+	UNITS METERS
+	IMAGEQUALITY 95
+	IMAGETYPE agg
+	OUTPUTFORMAT
+		NAME agg
+		DRIVER AGG/PNG
+		IMAGEMODE RGB
+	END
+	PROJECTION 
+		"init=epsg:3857" 
+	END
+	LEGEND
+		KEYSIZE 20 10
+		KEYSPACING 5 5
+		LABEL
+			SIZE MEDIUM
+			OFFSET 0 0
+			SHADOWSIZE 1 1
+			TYPE BITMAP
+		END # LABEL
+		STATUS OFF
+	END # LEGEND
+
+	SCALEBAR
+		INTERVALS 5
+		SIZE 450 16
+		STATUS embed
+		UNITS kilometers
+		LABEL
+			FONT sans
+			TYPE truetype
+			ENCODING "UTF-8"
+			SIZE 12
+			COLOR 0 0 0
+			ANTIALIAS true
+			PARTIALS false
+		END
+	END # SCALEBAR
+
+	LAYER
+		NAME "MCD12Q1_V51_LC1.2012.tif"
+		TYPE RASTER
+		PROJECTION 
+			"init=epsg:4326" 
+		END
+		STATUS ON
+		DATA "GIS_Data_Archive/GTiff/ftp.glcf.umd.edu/MCD12Q1_V51_LC1.2012.tif"
+		CLASSITEM "[pixel]"
+		CLASS
+			EXPRESSION "13"
+			STYLE
+				COLOR 255 0 0
+			END
+		END
+	END
+
+	LAYER
+		NAME "MT.vrt"
+		TYPE RASTER
+		PROJECTION 
+			"init=epsg:3857"
+		END
+		STATUS ON
+		DATA "GIS_Data_Archive/src/s-jrciprvm-ftp-ext.jrc.it/BETA/FULL/MT.vrt"
+		CLASSITEM "[pixel]"
+		CLASS
+			EXPRESSION "1"
+			STYLE
+				COLOR 204 255 255
+			END
+		END
+		CLASS
+			EXPRESSION "2"
+			STYLE
+				COLOR 255 204 153
+			END
+		END
+		CLASS
+			EXPRESSION "3"
+			STYLE
+				COLOR 0 153 255
+			END
+		END
+		CLASS
+			EXPRESSION "4"
+			STYLE
+				COLOR 51 255 0
+			END
+		END
+		CLASS
+			EXPRESSION "5"
+			STYLE
+				COLOR 255 255 0
+			END
+		END
+		CLASS
+			EXPRESSION "6"
+			STYLE
+				COLOR 255 0 0
+			END
+		END
+	END
+
+	LAYER
+		NAME "lspop2010.tif"
+		TYPE RASTER
+		PROJECTION 
+			"init=epsg:4326" 
+		END
+		STATUS ON
+		DATA "GIS_Data_Archive/GTiff/ornl.landscan/lspop2010.tif"
+		PROCESSING "SCALE=AUTO"
+	END
+	
+	LAYER
+		NAME "Admin"
+		TYPE POLYGON
+		PROJECTION 
+			"init=epsg:4326"
+		END
+		STATUS ON
+		CONNECTIONTYPE OGR
+		CONNECTION "/vsizip/GIS_Data_Archive/src/mappinghacks.com/world_borders.zip"
+		DATA "world_borders"
+		CLASS
+			STYLE
+				WIDTH 0.5
+				OUTLINECOLOR 255 255 0
+			END
+		END
+	END
+END
