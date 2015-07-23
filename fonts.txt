@@ -1,1 +1,1 @@
-../ECON-SAT/fonts.txt
+sans fonts/OpenSans-Regular.ttf
